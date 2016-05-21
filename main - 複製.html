@@ -1,0 +1,113 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CASTLE</title>
+	<style type="text/css">
+  body.back {background-attachment: fixed; 
+  background-image: url("castle.jpg"); 
+  background-repeat: no-repeat; 
+  background-position: center center;
+  background-color: black;
+}
+</style>
+</head>
+<script>
+	var peopled = new Image()
+	peopled.src = "http://localhost/hw/wd1.png";
+	var peopleu = new Image()
+	peopleu.src = "http://localhost/hw/wu1.png";
+	var peopler = new Image()
+	peopler.src = "http://localhost/hw/wr1.png";
+	var peoplel = new Image()
+	peoplel.src = "http://localhost/hw/wl1.png";
+	var save_x = 166;
+	var save_xm;
+	var save_y = 170;
+	var save_ym;
+	function draw(x, y, people){
+
+		var c = document.getElementById("myCanvas");	//取得myCanvas畫布
+		var pen = c.getContext("2d");	//提起畫筆
+		var img = new Image();	//宣告圖片常件
+		save_x = save_x+x;
+		save_y = save_y+y;
+		img.src="http://localhost/hw/book_house.png";	//載入圖片
+		if((save_x==232&&(save_y>=170&&save_y<=275)))
+		{
+			pen.drawImage(img, 0, 0);	//將圖片放在畫布上
+			pen.drawImage(people, save_x, save_y);	//將圖片放在畫布上 //200.102 //33.35
+		}
+		else if(save_x>=232&&save_x<=298&&save_y==275){
+			pen.drawImage(img, 0, 0);	//將圖片放在畫布上
+			pen.drawImage(people, save_x, save_y);	//將圖片放在畫布上 //200.102 //33.35
+		}
+		else if(save_x>=199&&save_x<=365&&save_y==170){
+			pen.drawImage(img, 0, 0);	//將圖片放在畫布上
+			pen.drawImage(people, save_x, save_y);	//將圖片放在畫布上 //200.102 //33.35
+		}
+		else{
+			save_x = save_x-x;
+			save_y = save_y-y;
+		}
+	}
+	function key(e){
+		var x = e.keyCode;
+		switch(x){
+			case 83 :
+				draw(0, 35, peopled);
+				break;
+			case 115 :
+				draw(0, 35, peopled);
+				break;
+			case 100 :
+				draw(33, 0, peopler);
+				break;
+			case 68 :
+				draw(33, 0, peopler);
+				break;
+			case 87 :
+				draw(0, -35, peopleu);
+				break;
+			case 119 :
+				draw(0, -35, peopleu);
+				break;
+			case 97 :
+				draw(-33, 0, peoplel);
+				break;
+			case 65 :
+				draw(-33, 0, peoplel);
+				break;
+		}
+	}
+</script>
+
+<body onload="draw(0,0,peopled);" onkeypress="key(event);" >
+
+<canvas id="myCanvas" width="1200" height="1000">
+Your browser does not support the canvas element.
+</canvas>
+<div name="main" align=center>
+
+</div>
+<!--
+<div class="forsearch" style="font-size:20px; color:#FFB3FF; font-family: 'Courgette', cursive;">
+<form action="http://localhost/metasearch.php" method=get name="search">
+<h1> <font color="Black">Welcome to Bookmark website</font></h1>
+	Search: <input type="text" name="keyword">
+	<input type=submit value="go">
+</form>
+<form action="http://localhost/savebook.php" method=get name="thing">
+modify your account:
+<a href="http://localhost/modify.php/">
+<input type="button" value="modify"></a><br>
+<h1> <font color="Black">Add new bookmark</font></h1>
+	Name: <input type="text" name="name"><br><br>
+	Website: <input type="text" name="link" style="width:300px;height:40px;font-size: 20px;"><br><br>
+	<input type=submit value="OK">
+</form>
+<h1> <font color="Black">Bookmark</font></h1>
+</div>-->
+
+</div>
+</body>
+</html>
